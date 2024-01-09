@@ -1,6 +1,6 @@
 # Managing .ton Subdomains Guide
 
-In this guide, we will write code to manage .ton subdomains, deploy a smart contract for subdomain management, set it as
+In this guide, we will write code to manage `.ton` and `.t.me` subdomains, deploy a smart contract for subdomain management, set it as
 the main controller for subdomains, and create a subdomain record while binding it to a wallet address.
 
 ## Preparation
@@ -93,7 +93,7 @@ To deploy the smart contract, follow these steps:
 4. After successful execution of the code, a line will be displayed with the address of the deployed smart contract;
    save it; in the next stages it will be used as RESOLVE_ADDRESS.
 
-### Set a subdomain manager on the .ton domain
+### Set a subdomain manager on the .ton or .t.me domain
 
 To resolve an address, follow these steps:
 
@@ -275,6 +275,6 @@ SUBDOMAIN and WALLET_ADDRESS.
 
 ## See Also
 
-* [Telegram bot for managing .ton subdomains](https://t.me/TONSubdomainBot)
+* [Telegram bot for managing .ton and .t.me subdomains](https://t.me/TONSubdomainBot)
 * [Subdomain Manager source code](https://github.com/Gusarich/simple-subdomain)
 * [Source code of scripts](https://github.com/tonmendon/ton-subdomain/tree/main/scripts)

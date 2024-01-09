@@ -1,6 +1,14 @@
 # 🤖 TON Subdomain Manager Bot
 
-This bot provides a convenient and intuitive interface for creating, managing and configuring .ton subdomains in the TON
+[![TON](https://img.shields.io/badge/TON-grey?logo=TON&logoColor=40AEF0)](https://ton.org)
+[![Telegram Bot](https://img.shields.io/badge/Bot-grey?logo=telegram)](https://core.telegram.org/bots)
+[![Python](https://img.shields.io/badge/Python-3.10-blue.svg)](https://www.python.org/downloads/release/python-3100/)
+[![License](https://img.shields.io/github/license/tonmendon/ton-subdomain)](https://github.com/tonmendon/ton-subdomain/blob/main/LICENSE)
+[![Redis](https://img.shields.io/badge/Redis-Yes?logo=redis&color=white)](https://redis.io/)
+[![Docker](https://img.shields.io/badge/Docker-blue?logo=docker&logoColor=white)](https://www.docker.com/)
+
+This bot provides a convenient and intuitive interface for creating, managing and configuring `.ton` and `.t.me`
+subdomains in the TON
 network.
 
 * Bot example: [@TONSubdomainBot](https://t.me/TONSubdomainBot)
