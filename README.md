@@ -3,13 +3,14 @@
 [![TON](https://img.shields.io/badge/TON-grey?logo=TON&logoColor=40AEF0)](https://ton.org)
 [![License](https://img.shields.io/github/license/tonmendon/ton-subdomain)](https://github.com/tonmendon/ton-subdomain/blob/main/LICENSE)
 
-This repository has been created to simplify the process of creating and managing .ton subdomains on the TON network
+This repository has been created to simplify the process of creating and managing `.ton` and `.t.me` subdomains on the
+TON network
 for both regular users and developers.
 
 ## Repository Contents
 
-* [Python Scripts](scripts): This directory contains Python scripts aimed at automating specific tasks related to .ton
-  subdomain management.
+* [Python Scripts](scripts): This directory contains Python scripts aimed at automating specific tasks related to `.ton`
+  and `.t.me` subdomain management.
 
 * [Telegram Bot](bot): In this directory, you'll find the source code for the Telegram bot designed to facilitate user
   interaction.
