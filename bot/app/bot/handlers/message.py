@@ -10,7 +10,7 @@ from app.bot.manager import Manager
 from app.bot.utils.states import State
 from app.bot.utils.transactions import SetWalletTransaction, SetStorageTransaction, SetSiteTransaction
 from app.bot.utils.misc import validate_domain, StorageBagId, AdnlAddress
-from app.config import get_dns_collection_address
+from app.config import get_dns_collections
 
 router = Router()
 router.message.filter(F.chat.type == "private")
@@ -35,7 +35,7 @@ async def main_menu_message(message: Message, manager: Manager, atc_manager: ATC
         collection_address = nft.collection.address.to_userfriendly(True)
         owner_address = nft.owner.address.to_raw()
 
-        if collection_address != get_dns_collection_address(manager.is_testnet):
+        if collection_address not in get_dns_collections(manager.is_testnet):
             text = manager.text_message.get("wrong_collection")
         elif owner_address != atc_manager.user.account_wallet.address:
             text = manager.text_message.get("wrong_owner")

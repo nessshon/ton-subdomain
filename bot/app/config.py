@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import List
 
 from environs import Env
 
@@ -67,9 +68,11 @@ def load_config() -> Config:
     )
 
 
-def get_dns_collection_address(is_testnet: bool = False) -> str:
-    return (
-        "EQDjPtM6QusgMgWfl9kMcG-EALslbTITnKcH8VZK1pnH3UZA"  # noqa
-        if is_testnet else
-        "EQC3dNlesgVD8YbAazcauIrXBPfiVhMMr5YYk2in0Mtsz0Bz"  # noqa
-    )
+def get_dns_collections(is_testnet: bool = False) -> List[str]:
+    ton_dns_collection = "EQC3dNlesgVD8YbAazcauIrXBPfiVhMMr5YYk2in0Mtsz0Bz"  # noqa
+    testnet_ton_dns_collection = "EQDjPtM6QusgMgWfl9kMcG-EALslbTITnKcH8VZK1pnH3UZA"  # noqa
+    telegram_username_collection = "EQCA14o1-VWhS2efqoh_9M1b_A9DtKTuoqfmkn83AbJzwnPi"  # noqa
+
+    if is_testnet:
+        return [testnet_ton_dns_collection]
+    return [ton_dns_collection, telegram_username_collection]
