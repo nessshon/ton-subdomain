@@ -2,14 +2,13 @@ from aiogram import Router, F
 from aiogram.types import Message
 from aiogram_tonconnect import ATCManager
 from aiogram_tonconnect.tonconnect.models import SendTransactionCallbacks
-from pytonapi import AsyncTonapi
 from pytonapi.exceptions import TONAPIError
 
 from app.bot.handlers.windows import Window
 from app.bot.manager import Manager
 from app.bot.utils.states import State
 from app.bot.utils.transactions import SetWalletTransaction, SetStorageTransaction, SetSiteTransaction
-from app.bot.utils.misc import validate_domain, StorageBagId, AdnlAddress
+from app.bot.utils.misc import validate_domain, StorageBagId, AdnlAddress, get_next_resolver, get_domain_name
 from app.config import get_dns_collections
 
 router = Router()
@@ -32,27 +31,18 @@ async def main_menu_message(message: Message, manager: Manager, atc_manager: ATC
             await Window.main_menu(manager, text=text)
             return
 
-        collection_address = nft.collection.address.to_userfriendly(True)
+        nft_address = nft.address.to_raw()
         owner_address = nft.owner.address.to_raw()
+        collection_address = nft.collection.address.to_raw()
 
         if collection_address not in get_dns_collections(manager.is_testnet):
             text = manager.text_message.get("wrong_collection")
         elif owner_address != atc_manager.user.account_wallet.address:
             text = manager.text_message.get("wrong_owner")
         else:
-            async def get_next_resolver(tonapi: AsyncTonapi, domain_name: str) -> str | None:
-                try:
-                    dns_record = await tonapi.dns.resolve(domain_name)
-                except TONAPIError:
-                    return None
-                return dns_record.next_resolver
-
-            execute_result = await manager.tonapi.blockchain.execute_get_method(
-                nft.address.to_raw(), "get_domain"
-            )
-            domain = execute_result.decoded.get("domain", None)
-            next_resolver = await get_next_resolver(manager.tonapi, f"{domain}.ton")
-            await manager.state.update_data(domain=domain, domain_address=nft.address.to_raw())
+            domain = await get_domain_name(manager.tonapi, nft_address, collection_address)
+            await manager.state.update_data(domain=domain, domain_address=nft_address)
+            next_resolver = await get_next_resolver(manager.tonapi, domain)
 
             if next_resolver:
                 contract = await manager.tonapi.blockchain.get_account_info(next_resolver)

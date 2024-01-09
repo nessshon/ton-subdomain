@@ -68,11 +68,12 @@ def load_config() -> Config:
     )
 
 
-def get_dns_collections(is_testnet: bool = False) -> List[str]:
-    ton_dns_collection = "EQC3dNlesgVD8YbAazcauIrXBPfiVhMMr5YYk2in0Mtsz0Bz"  # noqa
-    testnet_ton_dns_collection = "EQDjPtM6QusgMgWfl9kMcG-EALslbTITnKcH8VZK1pnH3UZA"  # noqa
-    telegram_username_collection = "EQCA14o1-VWhS2efqoh_9M1b_A9DtKTuoqfmkn83AbJzwnPi"  # noqa
+TON_DNS_COLLECTION = "0:b774d95eb20543f186c06b371ab88ad704f7e256130caf96189368a7d0cb6ccf"  # noqa
+TON_DNS_TESTNET_COLLECTION = "0:e33ed33a42eb2032059f97d90c706f8400bb256d32139ca707f1564ad699c7dd"  # noqa
+TELEGRAM_USERNAMES_COLLECTION = "0:80d78a35f955a14b679faa887ff4cd5bfc0f43b4a4eea2a7e6927f3701b273c2"  # noqa
 
+
+def get_dns_collections(is_testnet: bool = False) -> List[str]:
     if is_testnet:
-        return [testnet_ton_dns_collection]
-    return [ton_dns_collection, telegram_username_collection]
+        return [TON_DNS_TESTNET_COLLECTION]
+    return [TON_DNS_COLLECTION, TELEGRAM_USERNAMES_COLLECTION]

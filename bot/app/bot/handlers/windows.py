@@ -127,7 +127,7 @@ class Window:
     @staticmethod
     async def transaction_accepted(manager: Manager, **_) -> None:
         state_data = await manager.state.get_data()
-        subdomain = f"{state_data.get('subdomain', '')}.{state_data.get('domain', '')}.ton"
+        subdomain = f"{state_data.get('subdomain', '')}.{state_data.get('domain', '')}"
 
         text = manager.text_message.get("transaction_accepted")
         reply_markup = keyboards.back_main(manager.text_button)
