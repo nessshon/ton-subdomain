@@ -1,5 +1,8 @@
 # TON Subdomain Management
 
+[![TON](https://img.shields.io/badge/TON-grey?logo=TON&logoColor=40AEF0)](https://ton.org)
+[![License](https://img.shields.io/github/license/tonmendon/ton-subdomain)](https://github.com/tonmendon/ton-subdomain/blob/main/LICENSE)
+
 This repository has been created to simplify the process of creating and managing .ton subdomains on the TON network
 for both regular users and developers.
 
@@ -31,13 +34,16 @@ community.
 We welcome your contributions! If you have ideas for improvement or have identified a bug, please create an issue or
 submit a pull request.
 
-## License
-
-This repository is distributed under the MIT License. Feel free to use, modify, and distribute the code in accordance
-with the terms of the license.
-
 ## Donations
 
-<a href="https://app.tonkeeper.com/transfer/EQC-3ilVr-W0Uc3pLrGJElwSaFxvhXXfkiQA3EwdVBHNNess"><img src="https://telegra.ph//file/8e0ac22311be3fa6f772c.png" width="55"/></a>
-<a href="https://tonhub.com/transfer/EQC-3ilVr-W0Uc3pLrGJElwSaFxvhXXfkiQA3EwdVBHNNess"><img src="https://telegra.ph//file/7fa75a1b454a00816d83b.png" width="55"/></a>\
-```EQC-3ilVr-W0Uc3pLrGJElwSaFxvhXXfkiQA3EwdVBHNNess```
+**TON** - `EQC-3ilVr-W0Uc3pLrGJElwSaFxvhXXfkiQA3EwdVBHNNess`
+
+**USDT** (TRC-20) - `TJjADKFT2i7jqNJAxkgeRm5o9uarcoLUeR`
+
+## License
+
+This repository is distributed under the [MIT License](https://github.com/tonmendon/ton-subdomain/blob/main/LICENSE).
+Feel
+free to use, modify, and distribute the code in accordance
+with the terms of the license.
+
