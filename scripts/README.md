@@ -28,7 +28,7 @@ To deploy the smart contract, follow these steps:
    import asyncio
    from uuid import uuid4
    
-   from pytoniq import Contract, WalletV4R2, LiteBalancer
+   from pytoniq import Contract, LiteBalancer, WalletV3, WalletV3R1, WalletV3R2, WalletV4, WalletV4R2
    from pytoniq_core import Cell, begin_cell, StateInit
    
    # Mainnet or testnet (False, True)
@@ -53,7 +53,8 @@ To deploy the smart contract, follow these steps:
        await provider.start_up()
    
        # Create a Ton wallet from the provided mnemonic
-       wallet = await WalletV4R2.from_mnemonic(
+       wallets = {"v3": WalletV3, "v3r1": WalletV3R1, "v3r2": WalletV3R2, "v4": WalletV4, "v4r2": WalletV4R2}
+       wallet = await wallets[WALLET_VERSION].from_mnemonic(
            provider=provider,
            mnemonics=MNEMONIC.split(" "),
        )
