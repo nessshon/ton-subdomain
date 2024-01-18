@@ -26,7 +26,7 @@ async def select_language_callback_query(call: CallbackQuery, manager: Manager, 
     if call.data in ["ru", "en"]:
         await manager.state.update_data(language_code=call.data)
         await atc_manager.update_interfaces_language(call.data)
-        await atc_manager.open_connect_wallet_window(
+        await atc_manager.connect_wallet(
             callbacks=ConnectWalletCallbacks(
                 before_callback=Window.select_language,
                 after_callback=Window.main_menu,
@@ -92,7 +92,7 @@ async def deploy_and_set_callback_query(call: CallbackQuery, manager: Manager, a
         state_data = await manager.state.get_data()
         domain_address = state_data.get("domain_address")
 
-        await atc_manager.open_send_transaction_window(
+        await atc_manager.send_transaction(
             callbacks=SendTransactionCallbacks(
                 before_callback=Window.main_menu,
                 after_callback=Window.send_subdomain,

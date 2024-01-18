@@ -82,7 +82,7 @@ async def send_storage_message(message: Message, manager: Manager, atc_manager: 
         state_data = await manager.state.get_data()
         await manager.state.update_data(storage_hex=storage_hex)
 
-        await atc_manager.open_send_transaction_window(
+        await atc_manager.send_transaction(
             callbacks=SendTransactionCallbacks(
                 after_callback=Window.transaction_accepted,
                 before_callback=Window.select_options,
@@ -109,7 +109,7 @@ async def send_wallet_message(message: Message, manager: Manager, atc_manager: A
         state_data = await manager.state.get_data()
         await manager.state.update_data(wallet_address=wallet_address)
 
-        await atc_manager.open_send_transaction_window(
+        await atc_manager.send_transaction(
             callbacks=SendTransactionCallbacks(
                 after_callback=Window.transaction_accepted,
                 before_callback=Window.select_options,
@@ -137,7 +137,7 @@ async def send_site_message(message: Message, manager: Manager, atc_manager: ATC
         state_data = await manager.state.get_data()
         await manager.state.update_data(adnl_address=adnl_address)
 
-        await atc_manager.open_send_transaction_window(
+        await atc_manager.send_transaction(
             callbacks=SendTransactionCallbacks(
                 after_callback=Window.transaction_accepted,
                 before_callback=Window.select_options,
