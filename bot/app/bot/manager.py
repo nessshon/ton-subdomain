@@ -22,6 +22,7 @@ from app.bot.utils.texts import TextMessage, TextButton
 from app.config import Config
 
 MESSAGE_EDIT_ERRORS = [
+    "no text in the message",
     "message can't be edited",
     "message is not modified",
     "message to edit not found",
