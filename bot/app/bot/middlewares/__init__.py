@@ -15,6 +15,7 @@ def register_middlewares(dp: Dispatcher, **kwargs) -> None:
             redis=kwargs["redis"],
             manifest_url=kwargs["config"].tonconnect.MANIFEST_URL,
             exclude_wallets=[],
+            qrcode_type="url",
         )
     )
     dp.update.outer_middleware.register(TONAPIMiddleware(kwargs["config"]))
