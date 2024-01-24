@@ -1,10 +1,7 @@
-from contextlib import suppress
-
 from aiogram import Router, F
 from aiogram.types import CallbackQuery
 from aiogram_tonconnect import ATCManager
 from aiogram_tonconnect.tonconnect.models import ConnectWalletCallbacks, SendTransactionCallbacks
-from pytonconnect.exceptions import WalletNotConnectedError
 
 from app.bot.handlers.windows import Window
 from app.bot.manager import Manager
@@ -76,8 +73,7 @@ async def settings_menu_callback_query(call: CallbackQuery, manager: Manager, at
 
     elif call.data == "disconnect_wallet":
         if atc_manager.tonconnect.connected:
-            with suppress(WalletNotConnectedError):
-                await atc_manager.tonconnect.disconnect()
+            await atc_manager.disconnect_wallet()
         await Window.select_language(manager)
 
     await call.answer()
