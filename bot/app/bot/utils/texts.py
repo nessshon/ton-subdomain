@@ -6,7 +6,7 @@ from aiogram.types import (
     LoginUrl,
     WebAppInfo,
 )
-from aiogram.utils.markdown import hide_link
+from aiogram.utils.markdown import hide_link, hlink
 
 
 class Text(metaclass=ABCMeta):
@@ -29,6 +29,9 @@ class TextMessage(Text):
     def data(self) -> dict:
         return {
             "ru": {
+                "source_code": (
+                    hlink("Исходный код", "https://github.com/tonmendon/ton-subdomain/tree/main/bot")
+                ),
                 "select_language": (
                     "👋 <b>Привет</b>, {full_name}!\n\n"
                     "Выберите язык:"
@@ -150,6 +153,9 @@ class TextMessage(Text):
                 ),
             },
             "en": {
+                "source_code": (
+                    hlink("Source code", "https://github.com/tonmendon/ton-subdomain/tree/main/bot")
+                ),
                 "select_language": (
                     "👋 <b>Hello</b>, {full_name}!\n\n"
                     "Select language:"
@@ -281,6 +287,8 @@ class TextButton(Text):
             "ru": {
                 "back": "‹ Назад",
                 "main": "⌂ Главная",
+                "source_code": "</> Исходный код",
+
                 "disconnect_wallet": "× Отключить кошелек",
                 "select_domain": "≡ Выбрать домен",
                 "buy_ton_domains": "• Купить .TON домены",
@@ -300,6 +308,8 @@ class TextButton(Text):
             "en": {
                 "back": "‹ Back",
                 "main": "⌂ Main",
+                "source_code": "</> Source code",
+
                 "disconnect_wallet": "× Disconnect wallet",
                 "select_domain": "≡ Select domain",
                 "buy_ton_domains": "• Buy .TON domains",

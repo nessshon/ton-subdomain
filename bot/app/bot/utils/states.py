@@ -8,6 +8,7 @@ class State(StatesGroup):
     change_language = BaseState()
 
     main_menu = BaseState()
+    source_code = BaseState()
     settings_menu = BaseState()
 
     deploy_and_set = BaseState()

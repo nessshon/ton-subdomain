@@ -28,3 +28,13 @@ async def language_command(message: Message, manager: Manager, atc_manager: ATCM
         await Window.select_language(manager)
 
     await manager.delete_message(message)
+
+
+@router.message(Command("source"))
+async def source_command(message: Message, manager: Manager, atc_manager: ATCManager) -> None:
+    if atc_manager.user.account_wallet and atc_manager.user.account_wallet.address:
+        await Window.source_code(manager)
+    else:
+        await Window.select_language(manager)
+
+    await manager.delete_message(message)

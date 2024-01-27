@@ -28,6 +28,17 @@ def back_main(text_button: TextButton) -> Markup:
     )
 
 
+def source_code(text_button: TextButton) -> Markup:
+    url = "https://github.com/tonmendon/ton-subdomain/tree/main/bot"
+
+    return Markup(
+        inline_keyboard=[
+            [text_button.get_button("source_code", url=url)],
+            [text_button.get_button("main")]
+        ]
+    )
+
+
 def main_menu(text_button: TextButton, is_testnet: bool) -> Markup:
     tondns_url = "https://dns.ton.org/?testnet=true" if is_testnet else "https://dns.ton.org/"
     getgems_url = (

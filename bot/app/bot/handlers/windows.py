@@ -28,6 +28,14 @@ async def get_next_resolver_address(tonapi: AsyncTonapi, tx_hash: str) -> str | 
 class Window:
 
     @staticmethod
+    async def source_code(manager: Manager) -> None:
+        text = manager.text_message.get("source_code")
+        reply_markup = keyboards.source_code(manager.text_button)
+
+        await manager.send_message(text, reply_markup=reply_markup)
+        await manager.state.set_state(State.source_code)
+
+    @staticmethod
     async def select_language(manager: Manager, **_) -> None:
         text = manager.text_message.get("select_language")
         reply_markup = keyboards.select_language(manager.text_button)
