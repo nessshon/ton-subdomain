@@ -1,8 +1,8 @@
 aiogram~=3.3.0
-aiogram-tonconnect==0.12.5
+aiogram-tonconnect==0.12.7
 cachetools==5.3.2
-environs==10.0.0
-pytonapi==0.1.6
+environs==10.3.0
+pytonapi==0.1.7
 pytonconnect==0.3.0
 pytoniq-core>=0.1.23
 redis==5.0.1
