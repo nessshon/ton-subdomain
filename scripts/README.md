@@ -1,4 +1,4 @@
-# Managing .ton Subdomains Guide
+# Managing .ton and .t.me Subdomains Guide
 
 In this guide, we will write code to manage `.ton` and `.t.me` subdomains, deploy a smart contract for subdomain management, set it as
 the main controller for subdomains, and create a subdomain record while binding it to a wallet address.
