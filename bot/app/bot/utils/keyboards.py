@@ -29,7 +29,7 @@ def back_main(text_button: TextButton) -> Markup:
 
 
 def source_code(text_button: TextButton) -> Markup:
-    url = "https://github.com/tonmendon/ton-subdomain/tree/main/bot"
+    url = "https://github.com/nessshon/ton-subdomain/tree/main/bot"
 
     return Markup(
         inline_keyboard=[

@@ -30,7 +30,7 @@ class TextMessage(Text):
         return {
             "ru": {
                 "source_code": (
-                    hlink("Исходный код", "https://github.com/tonmendon/ton-subdomain/tree/main/bot")
+                    hlink("Исходный код", "https://github.com/nessshon/ton-subdomain/tree/main/bot")
                 ),
                 "select_language": (
                     "👋 <b>Привет</b>, {full_name}!\n\n"
@@ -154,7 +154,7 @@ class TextMessage(Text):
             },
             "en": {
                 "source_code": (
-                    hlink("Source code", "https://github.com/tonmendon/ton-subdomain/tree/main/bot")
+                    hlink("Source code", "https://github.com/nessshon/ton-subdomain/tree/main/bot")
                 ),
                 "select_language": (
                     "👋 <b>Hello</b>, {full_name}!\n\n"

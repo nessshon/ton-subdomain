@@ -278,4 +278,4 @@ SUBDOMAIN and WALLET_ADDRESS.
 
 * [Telegram bot for managing .ton and .t.me subdomains](https://t.me/TONSubdomainBot)
 * [Subdomain Manager source code](https://github.com/Gusarich/simple-subdomain)
-* [Source code of scripts](https://github.com/tonmendon/ton-subdomain/tree/main/scripts)
+* [Source code of scripts](https://github.com/nessshon/ton-subdomain/tree/main/scripts)
