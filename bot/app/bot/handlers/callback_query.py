@@ -94,7 +94,7 @@ async def deploy_and_set_callback_query(call: CallbackQuery, manager: Manager, a
                 after_callback=Window.send_subdomain,
             ),
             transaction=DeploySubdomainManagerTransaction(
-                owner_address=atc_manager.user.account_wallet.address,
+                owner_address=atc_manager.user.account_wallet.address.to_raw(),
                 domain_address=domain_address,
             ),
         )

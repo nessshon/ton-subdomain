@@ -4,7 +4,6 @@ from aiogram.utils.markdown import hbold
 from aiogram_tonconnect import ATCManager
 from pytonapi import AsyncTonapi
 from pytonapi.exceptions import TONAPIError
-from pytonapi.utils import raw_to_userfriendly
 from pytoniq_core import Builder
 
 from app.bot.manager import Manager
@@ -64,7 +63,7 @@ class Window:
 
     @staticmethod
     async def settings_menu(manager: Manager, atc_manager: ATCManager, **_) -> None:
-        wallet = raw_to_userfriendly(atc_manager.user.account_wallet.address)
+        wallet = atc_manager.user.account_wallet.address.to_userfriendly()
         text = manager.text_message.get("settings_menu").format(wallet=wallet)
         reply_markup = keyboards.settings_menu(manager.text_button, manager.is_testnet)
 

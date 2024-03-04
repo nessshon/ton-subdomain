@@ -18,7 +18,7 @@ async def select_deposit_nft(inline_query: InlineQuery, manager: Manager, atc_ma
 
     for collection_address in collections:
         response = await manager.tonapi.accounts.get_nfts(
-            atc_manager.user.account_wallet.address,
+            atc_manager.user.account_wallet.address.to_raw(),
             collection=collection_address,
             limit=25, offset=offset, indirect_ownership=False,
         )
