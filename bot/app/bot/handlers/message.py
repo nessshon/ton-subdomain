@@ -37,7 +37,7 @@ async def main_menu_message(message: Message, manager: Manager, atc_manager: ATC
 
         if collection_address not in get_dns_collections(manager.is_testnet):
             text = manager.text_message.get("wrong_collection")
-        elif owner_address != atc_manager.user.account_wallet.address:
+        elif owner_address != atc_manager.user.account_wallet.address.to_raw():
             text = manager.text_message.get("wrong_owner")
         else:
             domain = await get_domain_name(manager.tonapi, nft_address, collection_address)
