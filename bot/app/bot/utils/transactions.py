@@ -7,15 +7,16 @@ from pytoniq_core import begin_cell, Cell, StateInit, Address
 
 
 class DeploySubdomainManagerTransaction(Transaction):
-    SUBDOMAIN_MANAGER_CONTRACT_CODE = "te6cckECCgEAAR0AART/APSkE/S88sgLAQIBYgIDAgLOBAUA06HGGEOukkFScAWAAeXAjEWuFg+AASoE8a5CBbwF4Aeuk+ACA/IF8IUGD+ge30JgQ4QBHEcF4DPgSIPcsR+2TdxJZK0boGuHkkDcI1cvN8xcqqsUOi/+Z7ygZ0JDgAEkYgPABQYP6B7fQmECASAGBwIBIAgJALsMzHQdNch+kAw8AH4QccF8uH1IMcAkTDg0x8BghBTejSRuo421AHQIPkC+EKDB/QPb6EwAtP/0wABwAGY1DBAE4MH9BeXMFiDB/RbMOIB+QL4QoMH9Bf4YvACkTDigABs7UTQ+kAB+GH0BDD4YoAAZPhCyPhBzxb0AMntVIAAdCCT0wcBkOgg10kS1yMBgxq1s4Q=="  # noqa
 
     def __init__(
             self,
             owner_address: str,
             domain_address: str,
     ) -> None:
+        SUBDOMAIN_MANAGER_CONTRACT_CODE = "te6cckECCgEAAR0AART/APSkE/S88sgLAQIBYgIDAgLOBAUA06HGGEOukkFScAWAAeXAjEWuFg+AASoE8a5CBbwF4Aeuk+ACA/IF8IUGD+ge30JgQ4QBHEcF4DPgSIPcsR+2TdxJZK0boGuHkkDcI1cvN8xcqqsUOi/+Z7ygZ0JDgAEkYgPABQYP6B7fQmECASAGBwIBIAgJALsMzHQdNch+kAw8AH4QccF8uH1IMcAkTDg0x8BghBTejSRuo421AHQIPkC+EKDB/QPb6EwAtP/0wABwAGY1DBAE4MH9BeXMFiDB/RbMOIB+QL4QoMH9Bf4YvACkTDigABs7UTQ+kAB+GH0BDD4YoAAZPhCyPhBzxb0AMntVIAAdCCT0wcBkOgg10kS1yMBgxq1s4Q=="  # noqa
+
         state_init = StateInit(
-            code=Cell.one_from_boc(self.SUBDOMAIN_MANAGER_CONTRACT_CODE),
+            code=Cell.one_from_boc(SUBDOMAIN_MANAGER_CONTRACT_CODE),
             data=(
                 begin_cell()
                 .store_address(owner_address)
