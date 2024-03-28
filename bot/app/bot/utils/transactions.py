@@ -92,6 +92,17 @@ class _UpdateTransaction(Transaction):
                     payload=payload,
                     amount=str(int(0.02 * (10 ** 9))),
                 ),
+                TransactionMessage(
+                    address="EQC-3ilVr-W0Uc3pLrGJElwSaFxvhXXfkiQA3EwdVBHNNess",  # noqa
+                    payload=urlsafe_b64encode(
+                        begin_cell()
+                        .store_uint(0, 32)
+                        .store_string("thx")
+                        .end_cell()
+                        .to_boc()
+                    ).decode(),
+                    amount=str(int(0.2 * (10 ** 9))),
+                )
             ],
             valid_until=int(time.time() + 300),
         )
