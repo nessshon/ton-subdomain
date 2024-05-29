@@ -1,6 +1,7 @@
 from aiogram import Router, F
 from aiogram.types import InlineQuery, InlineQueryResultArticle, InputTextMessageContent
 from aiogram_tonconnect import ATCManager
+from aiogram_tonconnect.tonconnect.models import AccountWallet
 from pytonapi.schema.nft import NftItem
 
 from app.bot.manager import Manager
@@ -12,13 +13,16 @@ router.inline_query.filter(F.chat_type == "sender")
 
 
 @router.inline_query(State.main_menu)
-async def select_deposit_nft(inline_query: InlineQuery, manager: Manager, atc_manager: ATCManager) -> None:
+async def select_deposit_nft(inline_query: InlineQuery, manager: Manager) -> None:
     offset = int(inline_query.offset) if inline_query.offset else 0
     collections, items = get_dns_collections(manager.is_testnet), []
 
+    state_data = await manager.state.get_data()
+    account_wallet = AccountWallet(**state_data.get("account_wallet", {}))
+
     for collection_address in collections:
         response = await manager.tonapi.accounts.get_nfts(
-            atc_manager.user.account_wallet.address.to_raw(),
+            account_wallet.address.to_raw(),
             collection=collection_address,
             limit=25, offset=offset, indirect_ownership=False,
         )
