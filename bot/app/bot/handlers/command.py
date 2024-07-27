@@ -12,7 +12,8 @@ router.message.filter(F.chat.type == "private")
 
 @router.message(Command("start"))
 async def start_command(message: Message, manager: Manager, atc_manager: ATCManager) -> None:
-    if atc_manager.user.account_wallet and atc_manager.user.account_wallet.address:
+    state_data = await manager.state.get_data()
+    if atc_manager.user.account_wallet and state_data.get("wallet_address"):
         await Window.main_menu(manager)
     else:
         await Window.select_language(manager)

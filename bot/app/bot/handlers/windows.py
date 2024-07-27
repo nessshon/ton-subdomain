@@ -2,6 +2,7 @@ import asyncio
 
 from aiogram.utils.markdown import hbold
 from aiogram_tonconnect import ATCManager
+from aiogram_tonconnect.tonconnect.models import AccountWallet
 from pytonapi import AsyncTonapi
 from pytonapi.exceptions import TONAPIError
 from pytoniq_core import Builder
@@ -53,7 +54,9 @@ class Window:
         await manager.state.set_state(State.change_language)
 
     @staticmethod
-    async def main_menu(manager: Manager, text: str = None, **_) -> None:
+    async def main_menu(manager: Manager, text: str = None, account_wallet: AccountWallet = None, **_) -> None:
+        if account_wallet is not None:
+            await manager.state.update_data(wallet_address=account_wallet.address.to_userfriendly())
         if not text:
             text = manager.text_message.get("main_menu").format(fullname=hbold(manager.user.full_name))
         reply_markup = keyboards.main_menu(manager.text_button, manager.is_testnet)
