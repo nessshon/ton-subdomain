@@ -1,4 +1,5 @@
 from abc import abstractmethod, ABCMeta
+from typing import Dict
 
 from aiogram.types import (
     InlineKeyboardButton,
@@ -7,6 +8,8 @@ from aiogram.types import (
     WebAppInfo,
 )
 from aiogram.utils.markdown import hide_link, hlink
+from aiogram_tonconnect.utils.keyboards import InlineKeyboard as ATCInlineKeyboardBase
+from aiogram_tonconnect.utils.texts import TextMessage as ATCTextMessageBase
 
 # Add other languages and their corresponding codes as needed.
 # You can also keep only one language by removing the line with the unwanted language.
@@ -15,6 +18,76 @@ SUPPORTED_LANGUAGES = {
     "en": "🇬🇧 English",
     "pl": "🇵🇱 Polski",
 }
+
+
+class ATCInlineKeyboard(ATCInlineKeyboardBase):
+
+    @property
+    def texts_buttons(self) -> Dict[str, Dict[str, str]]:
+        data = super().texts_buttons
+        data["pl"] = {
+            "back": "‹ Powrót",
+            "retry": "↻ Spróbuj Ponownie",
+            "connect_wallet": "Połącz {wallet_name}",
+            "open_wallet": "Idz do {wallet_name}",
+        }
+
+        return data
+
+
+class ATCTextMessage(ATCTextMessageBase):
+
+    @property
+    def texts_messages(self) -> Dict[str, Dict[str, str]]:
+        get_a_wallet_link = "https://ton.org/wallets?filters[wallet_features][slug][$in]=dapp-auth&pagination[limit]=-1"
+        ton_connect_banner_link = "https://telegra.ph//file/a4ddc111ff41692ad5200.jpg"
+
+        data = super().texts_messages
+
+        data["pl"] = {
+            # When the bot response time exceeds 2-3 seconds, such as during QR code generation,
+            # utilize 'loader_text' as a placeholder.
+            "loader_text": (
+                "⏳"
+            ),
+            # If a message is older than 2 days, the Telegram Bot API does not support direct deletion.
+            # Instead, we modify the message text as 'outdated_text'.
+            "outdated_text": (
+                "..."
+            ),
+            "connect_wallet": (
+                f"<a href='{get_a_wallet_link}'>Utwórz portfel</a>\n\n"
+                "<b>Połącz się z {wallet_name}!</b>\n\n"
+                "Zeskanuj używając aplikacji mobilnej:"
+            ),
+            "connect_wallet_proof_wrong": (
+                f"{hide_link(ton_connect_banner_link)}"
+                "<b>Uwaga</b>\n\n"
+                "Transakcja wysłana przez portfel jest nieprawidłowa lub połączenie się przedawniło."
+            ),
+            "connect_wallet_timeout": (
+                f"{hide_link(ton_connect_banner_link)}"
+                "<b>Uwaga</b>\n\n"
+                "Połączenie się przedawniło."
+            ),
+            "send_transaction": (
+                f"{hide_link(ton_connect_banner_link)}"
+                f"<b>Transakcja</b>\n\n"
+                "Otwórz {wallet_name} i zatwierdź transakcję."
+            ),
+            "send_transaction_timeout": (
+                f"{hide_link(ton_connect_banner_link)}"
+                "<b>Uwaga</b>\n\n"
+                "Transakcja się przedawniła."
+            ),
+            "send_transaction_rejected": (
+                f"{hide_link(ton_connect_banner_link)}"
+                "<b>Uwaga</b>\n\n"
+                "Odrzuciłeś transakcję!"
+            ),
+        }
+
+        return data
 
 
 class Text(metaclass=ABCMeta):

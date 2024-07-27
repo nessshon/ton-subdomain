@@ -6,6 +6,7 @@ from aiogram_tonconnect.utils.qrcode import QRUrlProvider
 from .manager import ManagerMiddleware
 from .throttling import ThrottlingMiddleware
 from .tonapi import TONAPIMiddleware
+from ..utils.texts import ATCInlineKeyboard, ATCTextMessage
 
 
 def register_middlewares(dp: Dispatcher, **kwargs) -> None:
@@ -17,6 +18,8 @@ def register_middlewares(dp: Dispatcher, **kwargs) -> None:
             storage=ATCRedisStorage(kwargs["redis"]),
             manifest_url=kwargs["config"].tonconnect.MANIFEST_URL,
             qrcode_provider=QRUrlProvider(),
+            text_message=ATCTextMessage,
+            inline_keyboard=ATCInlineKeyboard,
             tonapi_token=kwargs["config"].tonconnect.KEY,
         )
     )
