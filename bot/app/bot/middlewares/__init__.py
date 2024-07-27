@@ -17,6 +17,7 @@ def register_middlewares(dp: Dispatcher, **kwargs) -> None:
             storage=ATCRedisStorage(kwargs["redis"]),
             manifest_url=kwargs["config"].tonconnect.MANIFEST_URL,
             qrcode_provider=QRUrlProvider(),
+            tonapi_token=kwargs["config"].tonconnect.KEY,
         )
     )
     dp.update.outer_middleware.register(TONAPIMiddleware(kwargs["config"]))
