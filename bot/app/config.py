@@ -27,6 +27,7 @@ class RedisConfig:
 
 @dataclass
 class TONConnectConfig:
+    KEY: str
     MANIFEST_URL: str
 
 
@@ -63,6 +64,7 @@ def load_config() -> Config:
             MAX_RETRIES=env.int("TONAPI_MAX_RETRIES"),
         ),
         tonconnect=TONConnectConfig(
+            KEY=env.str("TON_CONNECT_KEY"),
             MANIFEST_URL=env.str("TON_CONNECT_MANIFEST_URL"),
         )
     )
