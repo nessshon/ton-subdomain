@@ -17,6 +17,7 @@ def register_middlewares(dp: Dispatcher, **kwargs) -> None:
         AiogramTonConnectMiddleware(
             storage=ATCRedisStorage(kwargs["redis"]),
             manifest_url=kwargs["config"].tonconnect.MANIFEST_URL,
+            redirect_url="https://t.me/TONSubdomainBot",
             qrcode_provider=QRUrlProvider(),
             text_message=ATCTextMessage,
             inline_keyboard=ATCInlineKeyboard,
