@@ -8,11 +8,19 @@ from aiogram.types import (
 )
 from aiogram.utils.markdown import hide_link, hlink
 
+# Add other languages and their corresponding codes as needed.
+# You can also keep only one language by removing the line with the unwanted language.
+SUPPORTED_LANGUAGES = {
+    "ru": "🇷🇺 Русский",
+    "en": "🇬🇧 English",
+    "pl": "🇵🇱 Polski",
+}
+
 
 class Text(metaclass=ABCMeta):
 
     def __init__(self, language_code: str) -> None:
-        self.language_code = language_code if language_code == "ru" else "en"
+        self.language_code = language_code if language_code in SUPPORTED_LANGUAGES.keys() else "en"
 
     @property
     @abstractmethod
@@ -275,7 +283,7 @@ class TextMessage(Text):
                     "• Try again.\n\n"
                     "<blockquote>A bug report has been sent to the developers.</blockquote>"
                 ),
-            }
+            },
             "pl": {
                 "source_code": (
                     hlink("Kod źródłowy", "https://github.com/nessshon/ton-subdomain/tree/main/bot")
@@ -450,7 +458,7 @@ class TextButton(Text):
                 "set_wallet": "• Set wallet",
                 "set_site": "• Set site",
             },
-            "en": {
+            "pl": {
                 "back": "‹ Powrót",
                 "main": "⌂ Strona główna",
                 "source_code": "</> Kod źródłowy",

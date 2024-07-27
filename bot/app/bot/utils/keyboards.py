@@ -1,7 +1,8 @@
-from aiogram.types import InlineKeyboardMarkup as Markup, WebAppInfo
 from aiogram.types import InlineKeyboardButton as Button
+from aiogram.types import InlineKeyboardMarkup as Markup, WebAppInfo
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 
-from app.bot.utils.texts import TextButton
+from app.bot.utils.texts import TextButton, SUPPORTED_LANGUAGES
 
 
 def back(text_button: TextButton) -> Markup:
@@ -91,10 +92,13 @@ def select_options(text_button: TextButton) -> Markup:
 
 
 def select_language(text_button: TextButton, include_back: bool = False) -> Markup:
-    inline_keyboard = [
-        [Button(text="🇷🇺 Русский", callback_data="ru"),
-         Button(text="🇬🇧 English", callback_data="en")],
-    ]
+    builder = InlineKeyboardBuilder().row(
+        *[
+            Button(text=text, callback_data=callback_data)
+            for callback_data, text in SUPPORTED_LANGUAGES.items()
+        ], width=2
+    )
     if include_back:
-        inline_keyboard.append([text_button.get_button("back")])
-    return Markup(inline_keyboard=inline_keyboard)
+        builder.row(text_button.get_button("back"))
+
+    return builder.as_markup()

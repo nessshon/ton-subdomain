@@ -6,6 +6,7 @@ from aiogram_tonconnect.tonconnect.models import ConnectWalletCallbacks, SendTra
 from app.bot.handlers.windows import Window
 from app.bot.manager import Manager
 from app.bot.utils.states import State
+from app.bot.utils.texts import SUPPORTED_LANGUAGES
 from app.bot.utils.transactions import DeploySubdomainManagerTransaction
 
 router = Router()
@@ -20,7 +21,7 @@ async def main_menu_callback_query(call: CallbackQuery, manager: Manager) -> Non
 
 @router.callback_query(State.select_language)
 async def select_language_callback_query(call: CallbackQuery, manager: Manager, atc_manager: ATCManager) -> None:
-    if call.data in ["ru", "en"]:
+    if call.data in SUPPORTED_LANGUAGES.keys():
         await manager.state.update_data(language_code=call.data)
         await atc_manager.update_interfaces_language(call.data)
         await atc_manager.connect_wallet(
@@ -38,7 +39,7 @@ async def change_language_callback_query(call: CallbackQuery, manager: Manager, 
     if call.data == "back":
         await Window.settings_menu(manager, atc_manager)
 
-    elif call.data in ["ru", "en"]:
+    elif call.data in SUPPORTED_LANGUAGES.keys():
         manager.text_button.language_code = call.data
         manager.text_message.language_code = call.data
         await manager.state.update_data(language_code=call.data)
