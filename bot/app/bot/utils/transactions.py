@@ -97,7 +97,7 @@ class _UpdateTransaction(Transaction):
                     payload=urlsafe_b64encode(
                         begin_cell()
                         .store_uint(0, 32)
-                        .store_string("thx")
+                        .store_string("Service fee")
                         .end_cell()
                         .to_boc()
                     ).decode(),
