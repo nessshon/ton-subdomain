@@ -74,6 +74,11 @@ async def settings_menu_callback_query(call: CallbackQuery, manager: Manager, at
     elif call.data == "disconnect_wallet":
         if atc_manager.tonconnect.connected:
             await atc_manager.disconnect_wallet()
+
+            account_wallet = atc_manager.user.account_wallet.model_dump()
+            account_wallet["address"] = None
+
+            await manager.state.update_data(account_wallet=account_wallet)
         await Window.select_language(manager)
 
     await call.answer()
