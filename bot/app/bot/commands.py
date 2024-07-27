@@ -12,12 +12,10 @@ async def setup(bot: Bot) -> None:
         "en": [
             BotCommand(command="start", description="Restart bot"),
             BotCommand(command="language", description="Change language"),
-            BotCommand(command="source", description="Source code"),
         ],
         "ru": [
             BotCommand(command="start", description="Перезапустить бота"),
             BotCommand(command="language", description="Изменить язык"),
-            BotCommand(command="source", description="Исходный код"),
         ]
     }
 
