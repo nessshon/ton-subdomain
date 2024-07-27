@@ -276,6 +276,130 @@ class TextMessage(Text):
                     "<blockquote>A bug report has been sent to the developers.</blockquote>"
                 ),
             }
+            "pl": {
+                "source_code": (
+                    hlink("Kod źródłowy", "https://github.com/nessshon/ton-subdomain/tree/main/bot")
+                ),
+                "select_language": (
+                    "👋 <b>Witaj</b>, {full_name}!\n\n"
+                    "Wybierz język:"
+                ),
+                "change_language": (
+                    "<b>Zmień język:</b>\n\n"
+                ),
+                "main_menu": (
+                    f"{hide_link('https://telegra.ph//file/4361dbc645b1b25796a01.jpg')}"
+                    "🏠 <b>Menu główne</b>\n\n"
+                    "<b>Witaj w moim bocie,</b> "
+                    "stworzonym aby pomóc w tworzeniu domen .ton\n\n"
+                    "• <b>Wybierz domenę</b> używając przycisku, "
+                    "lub wyślij mi adres NFT domeny.\n\n"
+                    "<blockquote>Jeżeli nie masz jeszcze domeny, "
+                    "możesz zakupić ją używając odpowiedniego przycisku.</blockquote>"
+                ),
+                "settings_menu": (
+                    f"{hide_link('https://telegra.ph//file/a6e8dd433075543b601d2.jpg')}"
+                    "⚙️ <b>Ustawienia</b>\n\n"
+                    "<b>• Połączony portfel:</b>\n<code>{wallet}</code>"
+                ),
+                "switch_warning": (
+                    "Uwaga! Pamiętaj aby połączyć swój portfel ponownie!"
+                ),
+
+                "deploy_and_set": (
+                    "<b>Stwórz smart kontrakt</b>\n\n"
+                    "• Aby zarządzać zapisami DNS w swojej domenie, "
+                    "musisz stworzyć smart kontrakt."
+                    "<blockquote>Aby wykonać tą akcję musisz wysłać transakcję "
+                    "wykorzystując swój portfel.</blockquote>"
+                ),
+                "send_subdomain": (
+                    "<b>Podaj subdomenę</b>\n\n"
+                    "• Wyślij mi subdomenę którą chcesz stworzyć.\n\n"
+                    "<blockquote>Domena nie może być dłuższa niż 128 znaków, "
+                    "możze zawierać litery, numery i myślniki (-).</blockquote>"
+                ),
+                "wrong_subdomain": (
+                    "<b>Nieprawidłowa subdomena!</b>\n\n"
+                    "• Podaj prawidłową subdomenę.\n\n"
+                    "<blockquote>Domena nie może być dłuższa niż 128 znaków, "
+                    "możze zawierać litery, numery i myślniki (-).</blockquote>"
+                ),
+                "select_options": (
+                    "<b>Wybierz opcję</b>\n\n"
+                    "• <b>Ustaw Pamięć</b> - HEX\n"
+                    "• <b>Ustaw Adres Portfela</b> - Adres Portfela\n"
+                    "• <b>Ustaw stronę</b> - adres ADNL\n\n"
+                    "<b>Subodmena została wybrana:</b> <code>{subdomain}</code>"
+                ),
+                "send_storage": (
+                    "<b>Wyślij pamięć HEX:</b>"
+                ),
+                "wrong_storage": (
+                    "<b>Nieprawidłowa pamięć HEX!</b>\n\n"
+                ),
+                "set_storage_done": (
+                    "\n\n"
+                    "<b>Subdomena:</b>\n"
+                    "<code>{subdomain}</code>\n"
+                    "<b>Pamięć HEX:</b>\n"
+                    "<code>{storage_hex}</code>\n\n"
+                    "<b>Pamięć zainstalowana!</b>"
+                ),
+                "send_wallet": (
+                    "<b>Wyślij adres portfela:</b>"
+                ),
+                "wrong_wallet": (
+                    "<b>Nieprawidłowy adres portfela!</b>"
+                ),
+                "set_wallet_done": (
+                    "\n\n"
+                    "<b>Subdomena:</b>\n"
+                    "<code>{subdomain}</code>\n"
+                    "<b>Adres portfela:</b>\n"
+                    "<code>{wallet_address}</code>\n\n"
+                    "<b>Adres portfela zainstalowany!</b>"
+                ),
+                "send_site": (
+                    "<b>Wyślij adres ADNL:</b>"
+                ),
+                "wrong_site": (
+                    "<b>Nieprawidłowy adres ADNL!</b>\n\n"
+                ),
+                "set_site_done": (
+                    "\n\n"
+                    "<b>Subdomena:</b>\n"
+                    "<code>{subdomain}</code>\n"
+                    "<b>Adres ADNL:</b>\n"
+                    "<code>{adnl_address}</code>\n\n"
+                    "<b>Strona została zainstalowana!</b>"
+                ),
+                "transaction_accepted": (
+                    "<b>Tranzakcja zaakceptowana</b>\n\n"
+                    "• Transkacja została pomyślnie przetwożona przez portfel."
+                ),
+
+                "wrong_address": (
+                    "<b>Nieprawidłowy adres NFT!</b>\n\n"
+                    "• Podaj poprawny adres NFT."
+                ),
+                "wrong_collection": (
+                    "<b>Nieprawidłowa kolekcja NFT!</b>\n\n"
+                    "• Podany adres NFT nie należy do kolekcji TON DNS Domains."
+                ),
+                "wrong_owner": (
+                    "<b>Nieprawidłowy własciciel NFT!</b>\n\n"
+                    "• Nie jesteś własciecielem tego NFT.\n\n"
+                    "<blockquote>Ten NFT może być wystawiony na sprzedaż,"
+                    "usuń ofertę sprzedaży i spróbuj ponownie.</blockquote>"
+                ),
+
+                "unknown_error": (
+                    "<b>Wystąpił błąd!</b>\n\n"
+                    "• Spróbuj ponownie.\n\n"
+                    "<blockquote>Raport błędu został wysłany dla twórcy bota.</blockquote>"
+                ),
+            }
         }
 
 
@@ -325,6 +449,27 @@ class TextButton(Text):
                 "set_storage": "• Set storage",
                 "set_wallet": "• Set wallet",
                 "set_site": "• Set site",
+            },
+            "en": {
+                "back": "‹ Powrót",
+                "main": "⌂ Strona główna",
+                "source_code": "</> Kod źródłowy",
+
+                "disconnect_wallet": "× Odłącz portfel",
+                "select_domain": "≡ Wybierz domenę",
+                "buy_ton_domains": "• Kup domenę .TON ",
+                "buy_on_getgems": "• Kup na GetGems",
+                "settings_menu": "⎔ Ustawienia",
+
+                "change_language": "⇋ Zmień język",
+                "switch_to_mainnet": "◈ Przełącz na główną sieć",
+                "switch_to_testnet": "◇ Przełącz na sieć testową",
+
+                "deploy_and_set": "⌬ Stwórz i ustaw",
+
+                "set_storage": "• Ustaw pamięć",
+                "set_wallet": "• Ustaw adress portfela",
+                "set_site": "• Ustaw stronę",
             }
         }
 
