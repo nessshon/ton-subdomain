@@ -13,6 +13,7 @@ from app.bot.utils.states import State
 
 
 async def get_next_resolver_address(tonapi: AsyncTonapi, tx_hash: str) -> str | None:
+    await asyncio.sleep(5)
     for _ in range(10):
         try:
             event = await tonapi.events.get_event(tx_hash)
@@ -20,7 +21,7 @@ async def get_next_resolver_address(tonapi: AsyncTonapi, tx_hash: str) -> str | 
                 if action.ContractDeploy:
                     return action.ContractDeploy.address.to_raw()
         except TONAPIError:
-            await asyncio.sleep(1)
+            await asyncio.sleep(2)
         continue
     return None
 
