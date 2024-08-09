@@ -15,17 +15,7 @@ def back(text_button: TextButton) -> Markup:
 
 def main(text_button: TextButton) -> Markup:
     return Markup(
-        inline_keyboard=[
-            [text_button.get_button("main")]
-        ]
-    )
-
-
-def back_main(text_button: TextButton) -> Markup:
-    return Markup(
-        inline_keyboard=[
-            [text_button.get_button("back"), text_button.get_button("main")],
-        ]
+        inline_keyboard=[[text_button.get_button("main")]]
     )
 
 

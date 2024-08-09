@@ -112,7 +112,7 @@ class Window:
     async def send_storage(manager: Manager, text: str = None, **_) -> None:
         if not text:
             text = manager.text_message.get("send_storage")
-        reply_markup = keyboards.back_main(manager.text_button)
+        reply_markup = keyboards.back(manager.text_button)
 
         await manager.send_message(text, reply_markup=reply_markup)
         await manager.state.set_state(State.send_storage)
@@ -121,7 +121,7 @@ class Window:
     async def send_wallet(manager: Manager, text: str = None, **_) -> None:
         if not text:
             text = manager.text_message.get("send_wallet")
-        reply_markup = keyboards.back_main(manager.text_button)
+        reply_markup = keyboards.back(manager.text_button)
 
         await manager.send_message(text, reply_markup=reply_markup)
         await manager.state.set_state(State.send_wallet)
@@ -130,7 +130,7 @@ class Window:
     async def send_site(manager: Manager, text: str = None, **_) -> None:
         if not text:
             text = manager.text_message.get("send_site")
-        reply_markup = keyboards.back_main(manager.text_button)
+        reply_markup = keyboards.back(manager.text_button)
 
         await manager.send_message(text, reply_markup=reply_markup)
         await manager.state.set_state(State.send_site)
@@ -141,7 +141,7 @@ class Window:
         subdomain = f"{state_data.get('subdomain', '')}.{state_data.get('domain', '')}"
 
         text = manager.text_message.get("transaction_accepted")
-        reply_markup = keyboards.back_main(manager.text_button)
+        reply_markup = keyboards.main(manager.text_button)
 
         options_texts = {
             "set_storage": manager.text_message.get("set_storage_done").format(
@@ -156,6 +156,7 @@ class Window:
         }
         text += options_texts[state_data.get("option", None)]
 
+        await manager.state.update_data(next_resolver_address=None)
         await manager.send_message(text, reply_markup=reply_markup)
         await manager.state.set_state(State.transaction_accepted)
 

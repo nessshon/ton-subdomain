@@ -132,16 +132,6 @@ async def select_options_callback_query(call: CallbackQuery, manager: Manager) -
     await call.answer()
 
 
-@router.callback_query(State.send_storage)
-@router.callback_query(State.send_wallet)
-@router.callback_query(State.send_site)
-async def selected_options_callback_query(call: CallbackQuery, manager: Manager) -> None:
-    if call.data == "back":
-        await Window.select_options(manager)
-
-    await call.answer()
-
-
 @router.callback_query(State.transaction_accepted)
 async def transaction_accepted_callback_query(call: CallbackQuery, manager: Manager) -> None:
     if call.data == "back":
